@@ -10,11 +10,52 @@
 </h:head>
 <h:body>
 
-	<p:growl id="msgs" showDetail="false" life="7000" sticky="false" autoUpdate="true"/>
+	<p:growl id="msgs" showDetail="false" life="7000" sticky="false"
+		autoUpdate="true" />
 
+	<h:panelGrid columns="2">
+		<p:commandButton value="Novo" icon="ui-icon-plus"
+			style="margin-right:20px;" onclick="PF('dialogCadastro').show();">
+		</p:commandButton>
+	</h:panelGrid>
 	
-	
-	
+	<h:form id="form">
+		<p:dialog header="Cadastro de Veículos" widgetVar="dialogCadastro"
+			modal="true" height="100%">
+
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Placa:" />
+				<h:inputText id="placa" value="#{veiculoMB.edit.placa}" />
+
+				<h:outputLabel value="Modelo:" />
+				<h:inputText id="modelo" value="#{veiculoMB.edit.modelo}" />
+
+				<h:outputLabel value="Marca" />
+				<p:selectOneMenu id="marca" value="#{veiculoMB.edit.marca}">
+					<f:selectItem itemLabel="Marca 1" itemValue="MARCA1"/>
+					<f:selectItem itemLabel="Marca 2" itemValue="MARCA2"/>
+					<f:selectItem itemLabel="Marca 3" itemValue="MARCA3"/>
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Cor:" />
+				<h:inputText id="cor" value="#{veiculoMB.edit.cor}" />
+
+				<h:outputLabel value="Preço" />
+				<h:inputText id="preco" value="#{veiculoMB.edit.preco}" />
+
+				
+				<f:facet name="footer">
+				<p:commandButton value="Confirmar" icon="ui-icon-check"
+					update=":msgs form" actionListener="#{veiculoMB.onSave()}" />
+			</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+
+
+
+
 
 
 
